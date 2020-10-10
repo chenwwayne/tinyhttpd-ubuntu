@@ -1,6 +1,8 @@
-A mirror for tinyhttpd(Tinyhttpd非官方镜像,Fork自[sourceForge](https://sourceforge.net/projects/tiny-httpd/),仅供学习)
+tinyhttpd为官方镜像[sourceForge](https://sourceforge.net/projects/tiny-httpd/)的魔改版本，使之可以在ubuntu平台上运行，同时也在源码中添加简单的注释
 
-测试CGI时需要本机安装PERL，同时安装perl-cgi，可用
+测试CGI时需要检查本机是否有PERL
+
+Ubuntu16.04平台自带Perl
 
 ```bash
 $ whereis perl
