@@ -8,26 +8,40 @@ $ whereis perl
 
 进行查看
 
-### Prepare 
-Compile for Linux
-```
- To compile for Linux:
-  1) Comment out the #include <pthread.h> line.
-  2) Comment out the line that defines the variable newthread.
-  3) Comment out the two lines that run pthread_create().
-  4) Uncomment the line that runs accept_request().
-  5) Remove -lsocket from the Makefile.
-  
-```
-
 ### Compile & Run
 
 ```
-# 确保一件事情，查看perl的路径，并修改htdocs文件中的check.cgi,color.cgi
+# 确保一件事情，查看perl的路径，显示perl的路径为/usr/bin/perl/.并修改htdocs文件中的check.cgi,color.cgi
 $ whereis perl
+/usr/bin/perl
+```
+
+打开check.cgi
+
+修改第一行为
+
+```
+#!/usr/bin/perl -Tw
+```
+
+编译并执行
+
+```
+$ make
+$ ./httpd
 ```
 
 ![](https://github.com/ischansgithub/picture/blob/master/httpd1.PNG)
+
+打开浏览器，输入localhost:4000
+
+![](https://github.com/ischansgithub/picture/blob/master/httpd2.PNG)
+
+在网页输入栏输入red
+
+![](https://github.com/ischansgithub/picture/blob/master/httpd3.PNG)
+
+![](https://github.com/ischansgithub/picture/blob/master/httpd4.PNG)
 
 <p>&nbsp; &nbsp; &nbsp;每个函数的作用：</p>
 <p>&nbsp; &nbsp; &nbsp;accept_request: &nbsp;处理从套接字上监听到的一个 HTTP 请求，在这里可以很大一部分地体现服务器处理请求流程。</p>
@@ -71,47 +85,3 @@ $ whereis perl
 <p>&nbsp; &nbsp; （10） 关闭与浏览器的连接，完成了一次 HTTP 请求与回应，因为 HTTP 是无连接的。</p>
 <p><br>
 </p>
-
-以下内容来自源作者:
-
-  This software is copyright 1999 by J. David Blackstone.  Permission
-is granted to redistribute and modify this software under the terms of
-the GNU General Public License, available at http://www.gnu.org/ .
-
-  If you use this software or examine the code, I would appreciate
-knowing and would be overjoyed to hear about it at
-jdavidb@sourceforge.net .
-
-  This software is not production quality.  It comes with no warranty
-of any kind, not even an implied warranty of fitness for a particular
-purpose.  I am not responsible for the damage that will likely result
-if you use this software on your computer system.
-
-  I wrote this webserver for an assignment in my networking class in
-1999.  We were told that at a bare minimum the server had to serve
-pages, and told that we would get extra credit for doing "extras."
-Perl had introduced me to a whole lot of UNIX functionality (I learned
-sockets and fork from Perl!), and O'Reilly's lion book on UNIX system
-calls plus O'Reilly's books on CGI and writing web clients in Perl got
-me thinking and I realized I could make my webserver support CGI with
-little trouble.
-
-  Now, if you're a member of the Apache core group, you might not be
-impressed.  But my professor was blown over.  Try the color.cgi sample
-script and type in "chartreuse."  Made me seem smarter than I am, at
-any rate. :)
-
-  Apache it's not.  But I do hope that this program is a good
-educational tool for those interested in http/socket programming, as
-well as UNIX system calls.  (There's some textbook uses of pipes,
-environment variables, forks, and so on.)
-
-  One last thing: if you look at my webserver or (are you out of
-mind?!?) use it, I would just be overjoyed to hear about it.  Please
-email me.  I probably won't really be releasing major updates, but if
-I help you learn something, I'd love to know!
-
-  Happy hacking!
-
-                                   J. David Blackstone
-
