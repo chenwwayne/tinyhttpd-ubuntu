@@ -1,6 +1,12 @@
 A mirror for tinyhttpd(Tinyhttpd非官方镜像,Fork自[sourceForge](https://sourceforge.net/projects/tiny-httpd/),仅供学习)
 
-测试CGI时需要本机安装PERL，同时安装perl-cgi
+测试CGI时需要本机安装PERL，同时安装perl-cgi，可用
+
+```bash
+$ whereis perl
+```
+
+进行查看
 
 ### Prepare 
 Compile for Linux
@@ -11,7 +17,17 @@ Compile for Linux
   3) Comment out the two lines that run pthread_create().
   4) Uncomment the line that runs accept_request().
   5) Remove -lsocket from the Makefile.
+  
 ```
+
+### Compile & Run
+
+```
+# 确保一件事情，查看perl的路径，并修改htdocs文件中的check.cgi,color.cgi
+$ whereis perl
+```
+
+![](https://github.com/ischansgithub/picture/blob/master/httpd1.PNG)
 
 <p>&nbsp; &nbsp; &nbsp;每个函数的作用：</p>
 <p>&nbsp; &nbsp; &nbsp;accept_request: &nbsp;处理从套接字上监听到的一个 HTTP 请求，在这里可以很大一部分地体现服务器处理请求流程。</p>
